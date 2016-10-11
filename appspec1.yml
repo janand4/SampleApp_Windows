@@ -1,0 +1,16 @@
+version: 0.0
+os: linux 
+files:
+  - source: /test.sh
+    destination: /home/ec2-user/
+permissions:
+  - object: /home/ec2-user/test.sh
+    pattern: "*.sh"
+    owner: root
+    group: root
+    mode: 700
+hooks:
+  AfterInstall:
+    - location: /test.sh
+      timeout: 60
+      runas: root
