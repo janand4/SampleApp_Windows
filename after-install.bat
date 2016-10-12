@@ -1,2 +1,3 @@
 
-c:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command Set-ExecutionPolicy Unrestricted;"& {Add-PSSnapin SqlServerCmdletSnapin100; Add-PSSnapin SqlServerProviderSnapin100;invoke-sqlcmd -ServerInstance 107.23.132.144 -Database DMSSourceDB -Query "select * from dbo.Customer -username awssct -password Password1"}"
+$MyArray = "MyVar1 = 'awssct'", "MyVar2 = 'Password1'"  
+c:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command Set-ExecutionPolicy Unrestricted;"& {Add-PSSnapin SqlServerCmdletSnapin100; Add-PSSnapin SqlServerProviderSnapin100;invoke-sqlcmd -ServerInstance 107.23.132.144 -Database DMSSourceDB -Query "select * from dbo.Customer -username $(MyVar1) -password $(MyVar2)" -Variable $MyArray  }"
